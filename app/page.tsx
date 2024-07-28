@@ -8,20 +8,21 @@ export default function Home() {
   const [username, setUsername] = useState("saegewerk");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password !== "correct_password") { // There's no correct password, so it will always be wrong
-      setError(true);
+    if (password !== "correct_password") {
+      setShowModal(true);
     }
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    if (error) {
-      setError(false);
-    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -30,16 +31,15 @@ export default function Home() {
       style={{ backgroundImage: 'url("/background-image.jpg")' }}
     >
       <div className="w-full max-w-md">
-
         <div className="bg-white p-8 rounded-lg shadow-md">
-        <Image 
-          src="/logo.png" 
-          alt="Logo" 
-          width={500} 
-          height={500} 
-          layout="responsive" 
-          className="w-full"
-        />
+          <Image 
+            src="/logo.png" 
+            alt="Logo" 
+            width={500} 
+            height={500} 
+            layout="responsive" 
+            className="w-full"
+          />
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <label className="flex flex-col mt-2 ">
               <span className="text-gray-500">Benutzername</span>
@@ -57,7 +57,7 @@ export default function Home() {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={handlePasswordChange}
-                  className={`mt-1 p-2 w-full border rounded pr-10 ${error ? "error" : ""}`}
+                  className={`mt-1 p-2 w-full border rounded pr-10`}
                 />
                 <span
                   className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
@@ -67,8 +67,7 @@ export default function Home() {
                 </span>
               </div>
             </label>
-            {error && <p className="text-red-500 text-[16px] mt-2">Falsches Passwort. Bitte versuchen Sie es erneut.</p>}
-            <div className=" mt-5">
+            <div className="mt-2">
               <button
                 type="submit"
                 className="p-2 w-full bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -79,6 +78,27 @@ export default function Home() {
           </form>
         </div>
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-full max-w-lg mx-auto">
+            <h2 className="text-2xl mb-4 text-red-600">Fehler</h2>
+            <p className="mb-4">Falsches Passwort. Bitte versuchen Sie es erneut.</p>
+            <button
+              onClick={closeModal}
+              className="p-2 bg-red-500 text-white rounded hover:bg-red-600 w-full"
+            >
+              Schließen
+            </button>
+            <span 
+              className="absolute top-0 right-0 p-4 cursor-pointer text-red-600 text-3xl"
+              onClick={closeModal}
+            >
+              &times;
+            </span>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
