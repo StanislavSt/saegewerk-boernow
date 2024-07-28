@@ -30,6 +30,8 @@ export default function Home() {
       style={{ backgroundImage: 'url("/background-image.jpg")' }}
     >
       <div className="w-full max-w-md">
+
+        <div className="bg-white p-8 rounded-lg shadow-md">
         <Image 
           src="/logo.png" 
           alt="Logo" 
@@ -38,10 +40,9 @@ export default function Home() {
           layout="responsive" 
           className="w-full"
         />
-        <div className="bg-white p-8 rounded-lg shadow-md">
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <label className="flex flex-col mt-2 ">
-              <span className="text-gray-500">Username</span>
+              <span className="text-gray-500">Benutzername</span>
               <input
                 type="text"
                 value={username}
@@ -50,7 +51,7 @@ export default function Home() {
               />
             </label>
             <label className="flex flex-col mt-2">
-              <span className="text-gray-500">Password</span>
+              <span className="text-gray-500">Passwort</span>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -66,17 +67,13 @@ export default function Home() {
                 </span>
               </div>
             </label>
-            {error && <p className="text-red-500 text-sm mt-2">Incorrect password. Please try again.</p>}
-            <div className="flex justify-between items-center">
-              <label className="flex items-center">
-                <input type="checkbox" className="mr-2" />
-                <span className="text-gray-500">Remember me</span>
-              </label>
+            {error && <p className="text-red-500 text-[16px] mt-2">Falsches Passwort. Bitte versuchen Sie es erneut.</p>}
+            <div className=" mt-5">
               <button
                 type="submit"
-                className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="p-2 w-full bg-blue-500 text-white rounded hover:bg-blue-600"
               >
-                Log in
+                Einloggen
               </button>
             </div>
           </form>
