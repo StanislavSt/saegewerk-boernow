@@ -5,19 +5,19 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Home() {
-  const [username, setUsername] = useState("saegewerk");
+  const [username, setUsername] = useState("Saegewerk");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     if (password !== "correct_password") {
       setShowModal(true);
     }
   };
 
-  const handlePasswordChange = (e:any) => {
+  const handlePasswordChange = (e: any) => {
     setPassword(e.target.value);
   };
 
@@ -32,12 +32,12 @@ export default function Home() {
     >
       <div className="w-full max-w-md">
         <div className="bg-white p-8 rounded-lg shadow-md">
-          <Image 
-            src="/logo.png" 
-            alt="Logo" 
-            width={500} 
-            height={500} 
-            layout="responsive" 
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={500}
+            height={500}
+            layout="responsive"
             className="w-full"
           />
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -90,7 +90,7 @@ export default function Home() {
             >
               Schließen
             </button>
-            <span 
+            <span
               className="absolute top-0 right-0 p-4 cursor-pointer text-red-600 text-3xl"
               onClick={closeModal}
             >
