@@ -83,7 +83,7 @@ export default function Home() {
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg relative w-full max-w-lg mx-auto">
             <h2 className="text-2xl mb-4 text-red-600">Fehler</h2>
-            <p className="mb-4">Falsches Passwort. Bitte versuchen Sie es erneut.</p>
+            <p className="mb-4">Falsches Passwort</p>
             <button
               onClick={closeModal}
               className="p-2 bg-red-500 text-white rounded hover:bg-red-600 w-full"
